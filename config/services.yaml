@@ -2,6 +2,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    limite_article: %env(LIMIT_ARTICLE)%
 
 services:
     # default configuration for services in *this* file
@@ -27,3 +28,7 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+  app.article.articlefetcher:
+      class: App\Article\ArticleFetcher
+      arguments: ['@Doctrine\Bundle\DoctrineBundle\Registry', '%limite_article%']

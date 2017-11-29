@@ -21,14 +21,15 @@ class ArticleController extends Controller
     /**
      * @Route(path="/show/{slug}", name="article_show")
      */
-    public function showAction()
+    public function showAction(ViewArticleHandler $articleHandler )
     {
+        $articleHandler->handle($this->getParameter)
     }
 
     /**
      * @Route(path="/new", name="article_new")
      */
-    public function newAction()
+    public function newAction(ViewArticleHandler $articleHandler)
     {
         // Seul les auteurs doivent avoir access.
     }
@@ -36,7 +37,7 @@ class ArticleController extends Controller
     /**
      * @Route(path="/update/{slug}", name="article_update")
      */
-    public function updateAction()
+    public function updateAction(UpdateArticleHandler $articleHandler)
     {
         // Seul les auteurs doivent avoir access.
         // Seul l'auteur de l'article peut le modifier
